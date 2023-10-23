@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Introduction</title>
+    <link rel="stylesheet" href="index.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']],
+            processEscapes: true
+        },
+        "HTML-CSS": { scale: 90 },
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js" integrity="sha512-cOH8ndwGgPo+K7pTvMrqYbmI8u8k6Sho3js0gOqVWTmQMlLIi6TbqGWRTpf1ga8ci9H3iPsvDLr4X7xwhC/+DQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js" integrity="sha512-AMl4wfwAmDM1lsQvVBBRHYENn1FR8cfOTpt8QVbb/P55mYOdahHD4LmHM1W55pNe3j/3od8ELzPf/8eNkkjISQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Observer.min.js" integrity="sha512-7xTD1meeGGoAzwZKA0Z8YelV3qAvRltuwACWXpnxtneF7VAMztOTAi3t4laVSaE4Znq4LMPeGUIYWEvKEk5r3Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js" integrity="sha512-S6SXKUZ11xkCoD/UuhdXG4B4iiCXng+xW2KCx0lgfQqmdqtjqGgm4WChdYIhO1F/CmH21vnkSUvPEgXNgDwkjg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="index.js" defer></script>
+</head>
+<body>
+    <div class="panels">
+        <div class="panel p0">
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="intro"><h1>Name: Arjun Ghumman</h1>
+          <h1>Department: Quantitative Methods</h1>
+        <h1>Title: Adapting Machine Learning to Psychology</h1></div>
+        </div>
+
+        <div class="panel p1">
+            <h2>Bridging the Gap Between Prediction and Inference</h2>
+            <table>
+                <tr>
+                  <th>Statement</th>
+                </tr>
+                <tr>
+                  <td>1. "Impulsivity predicts problem gambling in low SES adolescent males" (Vitaro, Arseneault, & Tremblay, 1999)</td>
+                </tr>
+                <tr>
+                  <td>2. "Brain activity predicts how well visual experiences will be remembered" (Brewer, Zhao, Desmond, Glover, & Gabrieli, 1998)</td>
+                </tr>
+                <tr>
+                  <td>3. "Early gesture selectivity predicts later language learning" (Rowe & Goldin-Meadow, 2009)</td>
+                </tr>
+              </table>
+              <p>None of these papers actually demonstrated the predictive ability of the statistical models. Such assertions reflect the intuitive idea that a vast range of statistical models are, in a sense, predictive models. </p>
+              <table>
+                <tr>
+                  <th>Aspect</th>
+                  <th>Description</th>
+                </tr>
+                <tr>
+                  <td>Goal of Scientific Psychology</td>
+                  <td>
+                    The aim of scientific psychology is to understand human behavior, encompassing the ability to explain behavior (describe its causal underpinnings) and predict behavior (forecast behaviors not yet observed).
+                  </td>
+                </tr>
+                <tr>
+                  <td>Relationship Between Explanation and Prediction</td>
+                  <td>
+                    Explanation and prediction are often perceived as deeply intertwined. It is commonly believed that the best model for explaining observed behavior is also the best model for predicting future behavior.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Statistical and Pragmatic Tension</td>
+                  <td>
+                    Explanation and prediction can be in statistical and pragmatic tension. The model closest to the data-generating process is not necessarily the best at predicting real-world outcomes due to issues like overfitting. Complex models may outperform simpler but more accurate ones.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Choosing Between Explanation and Prediction</td>
+                  <td>
+                    Researchers must choose whether to prioritize an explanation-focused strategy (identifying general principles) or a prediction-focused strategy (mimicking real-world outcomes without concerning how it's achieved) on a case-by-case basis.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Implications for Psychological Science</td>
+                  <td>
+                    Researchers have traditionally favored an explanation-focused approach, but a prediction-focused approach can be more fruitful with the tools of predictive science and large-scale datasets. Psychology can move closer to becoming a predictive science.
+                  </td>
+                </tr>
+              </table>
+        </div>
+        <div class="panel p2">
+          <h2>Explanation vs Prediction</h2>
+          <p>\[Y = f(X) + \epsilon\]</p>
+          <p>Here f is some fixed but unknown function and &epsilon; is a random error term, which is independent of the predictors. The main idea is that f represents the systematic information the predictors provide about the outcome. </p>
+          <table border="1">
+              <tr>
+                  <th>Aspect</th>
+                  <th>Definition</th>
+                  <th>Key Differences</th>
+              </tr>
+              <tr>
+                  <td>Inference</td>
+                  <td>Deriving conclusions based on available evidence and reasoning.</td>
+                  <td>
+                      <ul>
+                          <li>Relies on existing data.</li>
+                          <li>May not always be accurate.</li>
+                          <li>Uses patterns and trends.</li>
+                          <li>Does not Treat f(x) like blackbox. </li>
+                      </ul>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Prediction</td>
+                  <td>Anticipating future outcomes or events based on current knowledge.</td>
+                  <td>
+                      <ul>
+                          <li>Looks ahead to forecast possibilities.</li>
+                          <li>Involves estimating future occurrences.</li>
+                          <li>Can be based on inference.</li>
+                          <li>Treats f(x) like blackbox. </li>
+
+                      </ul>
+                  </td>
+              </tr>
+          </table>
+          <p class="para">\[E(Y-\hat{Y})^{2} = E[f(x) + \epsilon - f(\hat{x})]^{2}\]</p>
+          <p class="equation">\(E(Y-\hat{Y})^{2} = \)<span id = "red">\(E[f(x) - f(\hat{x})]^{2}\)</span> + <span id = "green">\(var(\epsilon)\)</span></p>
+          <p class="para">Here \(E(Y-\hat{Y})^{2}\) represents the squared difference between the predicted and actual value of Y. The <span id="red">red part</span> of the equation represents the reducible error, whereas, the <span id = "green">green part</span> of the equation represents the irreducible error. </p>
+
+      </div>
+
+        <div class="panel p3">
+            <h2>Explanation Without Prediction</h2>
+            <table>
+                <tr>
+                  <th>Aspect</th>
+                  <th>Explanation</th>
+                </tr>
+                <tr>
+                  <td>Scientific Value of Explanation</td>
+                  <td>
+                    Explanatory science has immense scientific value and has led to significant achievements such as space exploration, disease control, and understanding molecular life origins.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Psychology's Emphasis on Explanation</td>
+                  <td>
+                    Psychology's focus on explaining the causes of behavior has resulted in the development of mechanistic models of cognition. These models often have theoretical appeal but lack the ability to predict future behavior effectively.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Deficiency in Predicting Behavior</td>
+                  <td>
+                    Psychology faces two main deficiencies in predicting behavior. Firstly, research papers in psychology often do not verify the predictive capabilities of their proposed models. They primarily rely on "goodness of fit" with sample data and the consistency of regression coefficients with theoretical perspectives. This approach doesn't guarantee predictive accuracy for out-of-sample data and may hinder prediction. Secondly, there is a replication crisis in psychology, with many published results failing to hold up in independent replication attempts. Models that explain behavior in one sample frequently fail to predict the same behavior in future samples.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Causes of Replication Failure</td>
+                  <td>
+                    Replication failure in psychology is attributed to practices like "p-hacking" and questionable research practices that have been prevalent in the field. These practices have contributed to the inability of models to predict behavior accurately.
+                  </td>
+                </tr>
+              </table>
+              
+        </div>
+
+        <div class="panel p4">
+            <h2>Principles of Machine Learning</h2>
+            <table>
+                <tr>
+                  <th>Principle</th>
+                  <th>Description</th>
+                </tr>
+                <tr>
+                  <td>Feature Engineering</td>
+                  <td>
+                    Feature engineering involves selecting, transforming, or creating relevant features from the raw data to improve the model's performance.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Overfitting</td>
+                  <td>
+                    Overfitting occurs when a model learns the training data too well but struggles to generalize to new, unseen data. It's essential to balance model complexity to avoid overfitting.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Cross-Validation</td>
+                  <td>
+                    Cross-validation is a technique for assessing a model's performance. It involves splitting the data into subsets for training and testing, allowing multiple evaluations to reduce bias.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Bias-Variance Trade-Off</td>
+                  <td>
+                    The bias-variance trade-off is the balance between model simplicity (high bias) and model flexibility (high variance). Finding the right balance is crucial for model accuracy.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Ensemble Methods</td>
+                  <td>
+                    Ensemble methods combine multiple models to improve predictive performance. Examples include bagging, boosting, and random forests.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Feature Importance</td>
+                  <td>
+                    Identifying feature importance helps determine which features contribute most to a model's predictions, aiding in feature selection and model interpretation.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Regularization</td>
+                  <td>
+                    Regularization techniques, like L1 and L2 regularization, help prevent overfitting by adding penalty terms to the model's loss function.
+                  </td>
+                </tr>
+              </table>
+              
+              
+        </div>
+
+        <div class="panel p5">
+          <h2>Machine Learning and Statistical Methods</h2>
+
+          <table>
+            <tr>
+              <th>Method</th>
+              <th>Description</th>
+              <th>Examples</th>
+            </tr>
+            <tr>
+              <td>Supervised Learning</td>
+              <td>Supervised learning is a type of machine learning where each observation has an associated response variable (target) to predict based on predictor variables (features). The primary goal is to build a model for accurate prediction.</td>
+              <td>
+                <ul>
+                  <li>Linear Regression</li>
+                  <li>Logistic Regression</li>
+                  <li>Decision Trees</li>
+                  <li>Random Forests</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Unsupervised Learning</td>
+              <td>Unsupervised learning involves exploring patterns, structures, or relationships in data without predefined target variables. The goal is to discover hidden patterns or groupings within the data.</td>
+              <td>
+                <ul>
+                  <li>K-Means Clustering</li>
+                  <li>Principal Component Analysis (PCA)</li>
+                  <li>Gaussian Mixture Models (GMM)</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Parametric Methods</td>
+              <td>Parametric methods make assumptions about the functional form of a model and estimate a set of parameters. They are based on predefined models and can be sensitive to model assumptions.</td>
+              <td>
+                <ul>
+                  <li>Linear Regression</li>
+                  <li>Naive Bayes</li>
+                  <li>Generalized Linear Models (GLM)</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Non-Parametric Methods</td>
+              <td>Non-parametric methods do not assume specific functional forms and aim to approximate data more flexibly. They can adapt to a broader range of data patterns but may require more data.</td>
+              <td>
+                <ul>
+                  <li>K-Nearest Neighbors (K-NN)</li>
+                  <li>Decision Trees (CART)</li>
+                  <li>Support Vector Machines (SVM)</li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="panel p6">
+            <h2>Model flexibility vs Interpretation</h2>
+            <p>We often end up working with a variety of models in statistical learning, some are less flexible, or more restrictive. The figure below provides an illustration of the trade-off between fexibility and interpretability for some of the most commonly used methods.</p>
+            <table>
+              <tr>
+                <th>Model</th>
+                <th>Flexibility</th>
+                <th>Interpretability</th>
+              </tr>
+              <tr>
+                <td>Least Squares Linear Regression</td>
+                <td>Relatively inflexible.</td>
+                <td>Quite interpretable.</td>
+              </tr>
+              <tr>
+                <td>Lasso Regression</td>
+                <td>Less flexible than linear regression.</td>
+                <td>More interpretable than linear regression due to feature selection, where some coefficients are set to zero.</td>
+              </tr>
+              <tr>
+                <td>Generalized Additive Models (GAMs)</td>
+                <td>More flexible than linear regression.</td>
+                <td>Somewhat less interpretable than linear regression because relationships between predictors and the response are modeled using curves.</td>
+              </tr>
+              <tr>
+                <td>Fully Non-linear Methods (e.g., Bagging, Boosting, Support Vector Machines with Non-linear Kernels, Neural Networks)</td>
+                <td>Highly flexible.</td>
+                <td>Harder to interpret compared to linear regression, as they are complex and may not have a straightforward relationship between predictors and the response.</td>
+              </tr>
+            </table>
+            
+
+        </div>
+        <div class="panel p7">
+            <h2>Flexibility vs Interpretation (Continued)</h2>
+            <div class="plot"><img src="plot1.jpeg" alt=""></div>
+            
+        </div>
+
+        <div class="panel p8">
+            <h2>Bias and Variance</h2>
+            <div class="split-plot">
+              <img src="https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/images/bias_variance/bullseye.png" alt="">
+              <video controls>
+                <source src="anim1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            </div>
+            <p>Bias refers to the error introduced by approximating a real-life, often complex problem with a simpler model. It represents the extent to which the model's predictions systematically differ from the true values.</p>
+            <p> Variance refers to the amount by which the model's predictions would change if we estimated it using a different training dataset. In other words, it quantifies how sensitive the model is to the specific data used for training. High variance means that small changes in the training data can result in significant changes in the predictions. </p>
+                
+        </div>
+        <div class="panel p9">
+            <h2>Why bother with Test Data and Training Data?</h2>
+            <table>
+              <tr>
+                <th>Aspect</th>
+                <th>Training Data</th>
+                <th>Test Data</th>
+              </tr>
+              <tr>
+                <td>Data Purpose</td>
+                <td>Used to train the machine learning model.</td>
+                <td>Used to evaluate the model's performance.</td>
+              </tr>
+              <tr>
+                <td>Availability to Model</td>
+                <td>Accessible during model training.</td>
+                <td>Kept separate from the model during training.</td>
+              </tr>
+              <tr>
+                <td>Used for Optimization</td>
+                <td>Used for adjusting model parameters and learning.</td>
+                <td>Not used for model optimization.</td>
+              </tr>
+              <tr>
+                <td>Goal</td>
+                <td>Minimize training error to fit the data.</td>
+                <td>Minimize generalization error to predict new data.</td>
+              </tr>
+              <tr>
+                <td>Performance Evaluation</td>
+                <td>Provides an optimistic estimate of model performance.</td>
+                <td>Used to assess how well the model will perform on new, unseen data.</td>
+              </tr>
+              <tr>
+                <td>Identifying Overfitting</td>
+                <td>May not clearly reveal overfitting issues.</td>
+                <td>Helps detect overfitting if the model performs poorly.</td>
+              </tr>
+            </table>
+            <p class="para">In order to evaluate the performance of a statistical learning method on a given dataset, we need to quantify how well its predictions match the observed data. The most commonly used measure of model fit is the mean squared error (MSE), which is the average squared difference between the predicted and actual values. The MSE is calculated as follows:</p>
+            <p class="para">\[MSE = \frac{1}{n}\sum^{n}_{i = 1}(y_{i} - f(x_{i}))^{2}\]</p>
+            <p class="para">Here \(f(x_{i})\) is the prediction that \(\hat{f}\) gives for the \(i^{th}\) observation. The MSE
+                will be small if the predicted responses are very close to the true responses, and will be large if for some of the observations, the predicted and true
+                responses differ substantially. </p>
+                <p id = "red">Overfitting occurs when a model captures random noise in the training data, resulting in a low training MSE but a high test MSE. Therefore, it is crucial to select models based on test MSE when possible.</p>
+                <p id = "green">Cross-validation is a valuable technique for estimating test MSE when a separate test dataset is unavailable. It helps in choosing models that strike a balance between fitting the training data well and generalizing to new, unseen data.</p>
+            
+        </div>
+        <div class="panel p10">
+            <h2>Overfitting</h2>
+            <table>
+              <tr>
+                <th>Aspect</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>Definition</td>
+                <td>Overfitting occurs when a model learns the training data so well that it captures noise or random variations, making it perform poorly on unseen data.</td>
+              </tr>
+              <tr>
+                <td>Causes</td>
+                <td>Overfitting can result from an overly complex model, lack of regularization, or limited training data.</td>
+              </tr>
+              <tr>
+                <td>Impact on Training Data</td>
+                <td>The model fits the training data nearly perfectly, achieving low training error.</td>
+              </tr>
+              <tr>
+                <td>Impact on Test Data</td>
+                <td>The model performs poorly on test data, leading to high test error.</td>
+              </tr>
+              <tr>
+                <td>Generalization</td>
+                <td>Overfit models have low generalization ability, failing to generalize from the training data to new, unseen data.</td>
+              </tr>
+              <tr>
+                <td>Detection</td>
+                <td>Overfitting can be detected by observing a significant gap between training and test error.</td>
+              </tr>
+              <tr>
+                <td>Prevention and Mitigation</td>
+                <td>Regularization techniques, cross-validation, increasing training data, and using simpler models can help prevent or mitigate overfitting.</td>
+              </tr>
+              <tr>
+                <td>Balancing Complexity</td>
+                <td>Balancing model complexity and performance is essential to reduce overfitting.</td>
+              </tr>
+              <tr>
+                <td>Sign of Overfitting</td>
+                <td>The model may exhibit extreme parameter values and fit noise in the training data.</td>
+              </tr>
+              <tr>
+                <td>Impact on Real-world</td>
+                <td>Overfit models may not perform well in real-world applications, making them unreliable.</td>
+              </tr>
+            </table>
+        </div>
+        <div class="panel p11">
+            <h2>Overfitting (Continued)</h2>
+            <p>The following graphs demonstrate overfitting, optimal fit and underfitting for Training Data.</p>
+            <div class="split-plot"><img src="https://miro.medium.com/v2/resize:fit:1358/1*u2MTHaUPMJ8rkTYjm2nHww.gif" alt=""> <img src="https://1394217531-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-LvBP1svpACTB1R1x_U4%2F-LvNWUoWieQqaGmU_gl9%2F-LvNoby-llz4QzAK15nL%2Fimage.png?alt=media&token=41720ce9-bb66-4419-9bd8-640abf1fc415" alt=""></div>
+        </div>
+        <div class="panel p12">
+            <h2>Cross-Validation</h2>
+            <table>
+              <tr>
+                <th>Aspect</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>Definition</td>
+                <td>A statistical method used to assess the performance and generalization of a predictive model by dividing the data into training and testing sets.</td>
+              </tr>
+              <tr>
+                <td>Objective</td>
+                <td>Estimate how well the model will perform on unseen data, which helps detect overfitting and improve model robustness.</td>
+              </tr>
+              <tr>
+                <td>Types</td>
+                <td>Common types include k-fold cross-validation, leave-one-out cross-validation, and stratified cross-validation.</td>
+              </tr>
+              <tr>
+                <td>K-Fold Cross-Validation</td>
+                <td>The data is divided into k subsets. The model is trained on k-1 subsets and tested on the remaining subset k times, producing k performance metrics.</td>
+              </tr>
+              <tr>
+                <td>Leave-One-Out Cross-Validation</td>
+                <td>Each data point is used as a test set while the rest are used for training. Repeated for all data points, providing n performance metrics.</td>
+              </tr>
+              <tr>
+                <td>Stratified Cross-Validation</td>
+                <td>Ensures that each fold has a similar class distribution to avoid bias, especially in imbalanced datasets.</td>
+              </tr>
+              <tr>
+                <td>Performance Metric</td>
+                <td>Commonly used metrics include Mean Squared Error (MSE), accuracy, F1-score, or area under the receiver operating characteristic curve (AUC-ROC).</td>
+              </tr>
+              <tr>
+                <td>Advantages</td>
+                <td>Provides a more robust estimate of model performance, helps prevent overfitting, and utilizes the entire dataset for both training and testing.</td>
+              </tr>
+              <tr>
+                <td>Drawbacks</td>
+                <td>Can be computationally intensive and may not be suitable for extremely large datasets.</td>
+              </tr>
+              <tr>
+                <td>Usage</td>
+                <td>Widely employed in machine learning, data science, and model selection to validate and optimize models.</td>
+              </tr>
+            </table>
+        </div>
+
+
+        <div class="panel p13">
+          <h2>Visualizing Cross Validation</h2>
+          <button class = "play1">Play Animation</button>
+          <div class="play-cv none">
+              <div class="large-box"><h3>Dataset</h3></div>
+              <div class="boxes">
+                  <div class="box">1</div>
+                  <div class="box">2</div>
+                  <div class="box">3</div>
+                  <div class="box">4</div>
+                  <div class="box">5</div>
+                  <div class="box">6</div>
+                  <div class="box">7</div>
+                  <div class="box">8</div>
+                  <div class="box">9</div>
+                  <div class="box">10</div>
+              </div>
+              <div class="legend">
+                  <div class = "flex-legend flex-legend1">
+                      <div class="box"></div>
+                      <p>Training Data</p>
+                  </div>
+                  <div  class = "flex-legend flex-legend2">
+                      <div class="box"></div>
+                      <p>Test Data</p>
+                  </div>
+              </div>
+              <div class="mse">
+
+              </div>
+          </div>
+      </div>
+
+
+        <div class="panel p14">
+          <h2>Tuning Parameters</h2>
+          <table>
+            <tr>
+              <th>Tuning Parameter</th>
+              <th>General Idea</th>
+            </tr>
+            <tr>
+              <td>Hyperparameter</td>
+              <td>Hyperparameters are parameters that are not learned from the data but are set prior to the training process. They control the behavior of machine learning algorithms and models.</td>
+            </tr>
+            <tr>
+              <td>Tuning</td>
+              <td>Tuning refers to the process of selecting the best hyperparameter values to optimize the performance of a machine learning model.</td>
+            </tr>
+            <tr>
+              <td>Optimization</td>
+              <td>Optimization involves finding the ideal hyperparameter configuration that results in the best model performance, often achieved through techniques like grid search or random search.</td>
+            </tr>
+            <tr>
+              <td>Regularization Strength</td>
+              <td>Regularization strength is a critical tuning parameter in models like Ridge and Lasso regression, controlling the extent to which coefficients are penalized to avoid overfitting.</td>
+            </tr>
+          </table>
+          <div class = "tuning">
+            <div id="knobBG">
+              <div id="knob"></div>
+            </div>
+            <div id="description">Tuning/Complexity Parameter = <span id = "value"></span></div>
+
+          </div>
+
+        </div>
+
+
+        <div class="panel p15">
+          <h2>Why should I regularize?</h2>
+          <table>
+            <tr>
+              <th>Idea</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <td>Prevent Overfitting</td>
+              <td>Regularization helps prevent overfitting, which occurs when a model fits the training data too closely, capturing noise and hindering generalization to unseen data.</td>
+            </tr>
+            <tr>
+              <td>Control Model Complexity</td>
+              <td>It controls the complexity of the model by adding a penalty term to the loss function, discouraging large coefficients and favoring simpler models.</td>
+            </tr>
+            <tr>
+              <td>Feature Selection</td>
+              <td>Certain regularization techniques, like Lasso, can perform automatic feature selection by setting some feature coefficients to zero, emphasizing the most important predictors.</td>
+            </tr>
+            <tr>
+              <td>Improved Generalization</td>
+              <td>Regularized models often generalize better to new, unseen data, resulting in improved model performance in real-world applications.</td>
+            </tr>
+            <tr>
+              <td>Reduction of Model Variance</td>
+              <td>Regularization helps reduce model variance, making the model less sensitive to minor fluctuations in the training data, which can lead to a more robust model.</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="panel p16">
+          <h2>Regularization Variants</h2>
+
+          <table>
+            <tr>
+              <th>Regularization Technique</th>
+              <th>Description</th>
+              <th>Use Cases</th>
+            </tr>
+            <tr>
+              <td>Ridge Regression</td>
+              <td>A regularization technique that adds a penalty term to the linear regression model to prevent overfitting by constraining the sum of squared coefficients (L2 regularization).</td>
+              <td>Reduces multicollinearity, stabilizes model coefficients.</td>
+            </tr>
+            <tr>
+              <td>Lasso Regression</td>
+              <td>A regularization technique that adds a penalty term to the linear regression model to encourage sparsity by constraining the sum of absolute coefficients (L1 regularization).</td>
+              <td>Feature selection, model simplification.</td>
+            </tr>
+            <tr>
+              <td>Elastic Net</td>
+              <td>A combination of Ridge and Lasso regularization techniques, offering a balanced approach between L1 and L2 regularization.</td>
+              <td>When both feature selection and multicollinearity reduction are required.</td>
+            </tr>
+            <tr>
+              <td>MCP (Minimax Concave Penalty)</td>
+              <td>An alternative to Lasso that uses a non-convex penalty to promote sparsity while allowing for some non-zero coefficients.</td>
+              <td>Robust feature selection, handling outliers.</td>
+            </tr>
+            <tr>
+              <td>SCAD (Smoothly Clipped Absolute Deviation)</td>
+              <td>A non-convex penalty function that combines L1 and L2 regularization to control model complexity while maintaining interpretability.</td>
+              <td>Feature selection, robustness to outliers.</td>
+            </tr>
+            <tr>
+              <td>Group Lasso</td>
+              <td>An extension of Lasso that groups related features together and encourages all or none of the grouped features to be selected.</td>
+              <td>Group-wise feature selection, handling correlated variables.</td>
+            </tr>
+            <tr>
+              <td>Sparse Group Lasso</td>
+              <td>A combination of Group Lasso and Lasso regularization, enabling both group-wise feature selection and individual feature sparsity.</td>
+              <td>Group-wise and individual feature selection, handling groups of correlated variables.</td>
+            </tr>
+            <tr>
+              <td>Relaxed Lasso</td>
+              <td>A variation of Lasso that uses a non-convex penalty, allowing for varying levels of sparsity in the model.</td>
+              <td>Flexible feature selection based on desired sparsity level.</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="panel p17">
+          <h2>Regularization (Continued)</h2>
+          <div class="split-plot">
+            <img src="img1rid.jpeg" alt="">
+            <img src="img2rid.jpeg" alt="">
+          </div>
+        </div>
+        <div class="panel p18">
+          <h2>Balancing Bias and Variance</h2>
+          <div class="plot"><img src="https://editor.analyticsvidhya.com/uploads/20790High%20Bias.gif" alt=""></div>
+        </div>
+        <div class="panel p19">
+          <h2>Ensemble Methods</h2>
+          <table>
+            <tr>
+              <th>Ensemble Method</th>
+              <th>Description</th>
+              <th>Key Concepts</th>
+              <th>Examples</th>
+            </tr>
+            <tr>
+              <td>Bagging</td>
+              <td>Uses bootstrapping to create multiple subsets of the training data and trains multiple base models. Combines their predictions, often reducing variance.</td>
+              <td>Bootstrap sampling, averaging or voting.</td>
+              <td>Random Forest</td>
+            </tr>
+            <tr>
+              <td>Boosting</td>
+              <td>Trains multiple weak learners sequentially, with each model focusing on correcting the errors of the previous ones. Typically reduces bias.</td>
+              <td>Weighted combination of models, adaptive learning rate.</td>
+              <td>AdaBoost, Gradient Boosting Machines</td>
+            </tr>
+            <tr>
+              <td>Random Forest</td>
+              <td>An ensemble of decision trees created through bagging. Each tree votes, and the most popular class is the prediction.</td>
+              <td>Decision trees, bootstrapping, feature subsampling.</td>
+              <td>Random Forest in the ensemble.</td>
+            </tr>
+            <tr>
+              <td>Bootstrapping</td>
+              <td>Bootstrapping is a statistical resampling technique, not an ensemble method. It creates multiple resampled datasets by randomly selecting data points with replacement.</td>
+              <td>Resampling, dataset variations.</td>
+              <td>N/A</td>
+            </tr>
+          </table>
+          
+        </div>
+
+        <div class="panel p20">
+          <h2>Non-Linear Regression (Global vs Local Functions)</h2>
+          <table>
+            <tr>
+              <th>Regression Technique</th>
+              <th>Description</th>
+              <th>Global/Local</th>
+            </tr>
+            <tr>
+              <td>Polynomial Regression</td>
+              <td>Polynomial regression is a form of regression analysis in which the relationship between the independent variable and the dependent variable is modeled as an nth-degree polynomial.</td>
+              <td>Global</td>
+            </tr>
+            <tr>
+              <td>Step Functions</td>
+              <td>Step functions involve dividing the range of the predictor variable into intervals and fitting a different constant in each interval. This allows modeling piecewise constant relationships.</td>
+              <td>Local</td>
+            </tr>
+            <tr>
+              <td>Regression Splines</td>
+              <td>Regression splines are used to create a piecewise polynomial function by dividing the range of the predictor variable into intervals and fitting separate polynomials in each interval.</td>
+              <td>Local</td>
+            </tr>
+            <tr>
+              <td>Smoothing Splines</td>
+              <td>Smoothing splines are a type of regression that seeks a balance between fitting the data well and having a smooth curve. They involve minimizing a sum of squared residuals with a penalty for curvature.</td>
+              <td>Global</td>
+            </tr>
+            <tr>
+              <td>Local Regression</td>
+              <td>Local regression, also known as LOESS (locally weighted scatterplot smoothing), fits a separate regression line to each data point by giving more weight to nearby data points. This results in a flexible, non-parametric regression technique.</td>
+              <td>Local</td>
+            </tr>
+            <tr>
+              <td>Generalized Additive Models (GAMs)</td>
+              <td>GAMs are a flexible class of regression models that extend linear regression by allowing for smooth functions of predictors. They combine multiple smooth functions in an additive manner.</td>
+              <td>Global</td>
+            </tr>
+          </table>
+          
+        </div>
+        <div class="panel p20">
+          <h2>Non-Linear Regression</h2>
+            <h3 class="image-headings">1 - Linear Regression</h3>
+            <h3 class="image-headings">2 - Piecewise Linear Regression</h3>
+            <h3 class="image-headings">3 - Non-Linear Polynomial Regression</h3>
+            <h3 class="image-headings">4 - Piecewise Non-Linear Polynomial Regression</h3>
+            <h3 class="image-headings">5 - Regression Splines</h3>
+            <h3 class="image-headings">6 - Natural Splines</h3>
+            <h3 class="image-headings">7 - Local Regression (Span = 2)</h3>
+            <h3 class="image-headings">8 - Local Regression (Span = 0.2)</h3>
+          <div class="plots">
+            <img src="plot_1.jpeg" alt="">
+            <img src="plot_2.jpeg" alt="">
+            <img src="plot_3.jpeg" alt="">
+            <img src="plot_4.jpeg" alt="">
+            <img src="plot_5.jpeg" alt="">
+            <img src="plot_6.jpeg" alt="">
+            <img src="plot_7.jpeg" alt="">
+            <img src="plot_8.jpeg" alt="">
+          </div>
+          <button onclick="prevImage()">&#9664; Previous</button>
+          <button onclick="nextImage()">Next &#9654;</button>   
+        </div>
+        <div class="panel p21">
+          <h2>Tree-Based Methods</h2>
+          <div class="plot" style="height: 30%;"><img src="https://www.researchgate.net/publication/343339583/figure/fig1/AS:919345555324931@1596200469527/The-evolution-of-tree-based-methods.jpg" alt=""></div>
+          <table>
+            <tr>
+                <th>Method</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>Decision Trees</td>
+                <td>Simple yet powerful machine learning models that make decisions by recursively splitting data based on the most significant features. They are intuitive, easy to interpret, and can handle both classification and regression tasks. However, they tend to overfit and lack predictive accuracy on complex datasets.</td>
+            </tr>
+            <tr>
+                <td>Bagging</td>
+                <td>An ensemble learning technique that reduces the variance and overfitting of decision trees. It involves creating multiple bootstrap samples from the training data and training decision trees on each sample. The final prediction is an average or majority vote of the predictions from individual trees, resulting in improved model performance and robustness.</td>
+            </tr>
+            <tr>
+                <td>Random Forest</td>
+                <td>An extension of bagging that further enhances predictive accuracy. It introduces randomness in feature selection during the construction of individual trees, reducing correlation between them. Random Forests are known for their robustness, ability to handle high-dimensional data, and resistance to overfitting.</td>
+            </tr>
+            <tr>
+                <td>Boosting</td>
+                <td>Another ensemble technique that builds a strong predictive model by combining multiple weak models, often decision trees. It focuses on iteratively correcting the errors made by previous models, leading to enhanced accuracy. Popular boosting algorithms include AdaBoost, Gradient Boosting, and variants like XGBoost and LightGBM.</td>
+            </tr>
+            <tr>
+                <td>BART Models</td>
+                <td>A Bayesian approach to regression and classification problems using decision trees. They provide flexibility in modeling complex relationships between features and the target variable while accounting for uncertainty. BART models are especially useful for tasks requiring predictive accuracy and uncertainty quantification, making them a valuable tool in various domains, including finance and healthcare.</td>
+            </tr>
+        </table>
+        </div>
+        <div class="panel p22">
+          <h2>Regression Trees</h2>
+          <div class="plot"><img src="https://techvidvan.com/tutorials/wp-content/uploads/sites/2/2020/05/Parts-of-a-Decision-Tree.jpg" alt=""></div>
+        </div>
+        <div class="panel p23">
+          <h2>Steps of a Decision Tree</h2>
+          <table>
+            <tr>
+                <th>Step</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Start by dividing the region into J distinct regions using recursive binary splitting. This algorithm takes a top down approach that begins with all observations in a single rectangle and recursively splits the predictor space. </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Select the best attribute to split the data based on a criterion (e.g.,RSS ,Gini impurity or information gain).</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Prune the Tree to reduce complexity. Choose the degree of complexity using k-fold cross-validation.</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>The decision tree is complete when all nodes are either pure (have a minimum number of observations) or additional splitting does not significantly reduce RSS or improve model fit.</td>
+            </tr>
+        </table>
+        <div class="plot" style = "height:50%;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Recursive_Splitting.png/640px-Recursive_Splitting.png" alt=""></div>
+        </div>
+        <div class="panel p24">
+          <h2>Bagging</h2>
+          <table>
+            <tr>
+                <th>Step</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Start with a training dataset with features and target values.</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Generate multiple bootstrapped datasets by randomly sampling from the training Dataset.</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Build separate decision tree models for each bootstrapped dataset. These trees are deep and not pruned. </td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>For each bootstrapped dataset, trained decision trees are used to make predictions. </td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Aggregate all predictions across bootstrapped samplesby averaging them to obtain a single low-variance model.</td>
+            </tr>
+        </table>
+        <div class="plot" style = "height:50%; width:100%;"><img src="https://miro.medium.com/v2/resize:fit:1400/1*ixvrbH45K8CcNZaj98JGuA.png" alt="" style = "width:40%;"></div>
+        <p>Out-of-bag (OOB) estimation is a method for estimating the prediction error of bagged models. It involves using the observations that were not used in the training of a given decision tree to estimate the prediction error. For example, if a dataset has 100 observations, the OOB error is estimated using the 30 observations that were not used to build the tree. This process is repeated for all trees in the ensemble, and the final OOB error is calculated as the average of the individual OOB errors.
+        </p>
+        </div>
+        <div class="panel p25">
+          <h2>Out of the Bag Demonstration</h2>
+        <div class="plot"><img src="anim_1.gif" alt="" style = "width:50%;"></div>
+        </div>
+        <div class="panel p26"><h2>Random Forests</h2>
+          <div class="plot" style = "height: 70%;"><img src="https://miro.medium.com/v2/resize:fit:1400/1*bYGSIgMlmVdedFJaE6PuBg.gif" alt=""></div>
+          <table>
+            <tr>
+                <th>Step</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Follow the same steps as bagging to generate multiple datasets using bootstrapping.</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Decorrelate the trees by choosing a random sample of predictors as split-candidates.</td>
+            </tr>
+            <tr>
+                <td>Rationale</td>
+                <td>Bagged Trees use the same predictors, hence, typically follow similar splits and yield similar trees. Predictions from the bagged trees will be highly correlated 
+                   which does not lead to as large of a reduction in variance as averaging many uncorrelated trees.</td>
+            </tr>
+          </table>
+        </div>
+        <div class="panel p27"><h2>Boosting</h2>
+        <table>
+          <tr>
+              <th>Step</th>
+              <th>Description</th>
+          </tr>
+          <tr>
+              <td>1</td>
+              <td>Begin by initializing the predictions with a very simple model (Stump).</td>
+          </tr>
+          <tr>
+              <td>2</td>
+              <td>In the next iteration, a new decision tree is built to the residuals of the previous iteration. </td>
+          </tr>
+          <tr>
+              <td>3</td>
+              <td>Add predictions from new model to old model creating an ensemble.</td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+              <th>Tuning Parameter</th>
+              <th>Description</th>
+          </tr>
+          <tr>
+              <td>The number of trees denoted by B</td>
+              <td>Unlike bagging and random forests, boosting
+                can overfit if B is too large. We use cross-validation to select B.</td>
+          </tr>
+          <tr>
+              <td>Rate of Learning (\(\lambda\))</td>
+              <td>The shrinkage parameter is typically a small positive number which controls the
+                rate at which boosting learns.</td>
+          </tr>
+          <tr>
+              <td>Number of splits</td>
+              <td>The number of splits in each tree, controls the complexity
+                of the boosted ensemble.</td>
+          </tr>
+        </table>
+        <div class="plot">
+          <video controls>
+            <source src="vid1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        </div>
+        </div>
+        <div class="panel p28">
+          <h2>Support Vector Machines</h2>
+          <table>
+            <tr>
+              <th></th>
+              <th></th>
+          </tr>
+          <tr>
+              <td>1. </td>
+              <td>Support Vector Machines are a class of supervised machine learning algorithm that aim to find the optimal hyperplane that best separates datapoints or fits the data.</td>
+          </tr>
+          <tr>
+              <td>2.</td>
+              <td>This hyperplane is chosen so that the margin (the distance between the hyperplane and the nearest data points) is maximized.</td>
+          </tr>
+          <tr>
+              <td>3.</td>
+              <td>Data points that are closest to the hyperplane and influence the margin are called "support vectors." These support vectors are crucial in determining the optimal hyperplane.</td>
+          </tr>
+          <tr>
+              <td>4.</td>
+              <td>In cases where the data is not linearly separable, SVMs use a kernel function to map the data into a higher-dimensional space where separation is possible. Common kernel functions include the linear kernel, polynomial kernel, and radial basis function (RBF) kernel.</td>
+          </tr>
+          </table>
+          <div class="plot" style="height:60%;"><img src="https://i.ytimg.com/vi/N1vOgolbjSc/maxresdefault.jpg" alt=""></div>
+        </div>
+        <div class="panel p29"><h2>SVM's (Continued) - Kernel Trick</h2>
+          <div class="plot" style = "height:60%"><img src="https://gregorygundersen.com/image/kerneltrick/idea.png" alt=""></div>
+          <table>
+            <tr>
+              <th>Kernel Function</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <td>Linear Kernel</td>
+              <td>Linear kernel is used when the data is linearly separable. It is one of the most common kernels to be used. It is mostly used in text classification problems.</td>
+            </tr>
+            <tr>
+              <td>Polynomial Kernel</td>
+              <td>Polynomial kernel is a more generalized form of the linear kernel. The polynomial kernel can distinguish curved or nonlinear input space. </td>
+            </tr>
+            <tr>
+              <td>RBF Kernel</td>
+              <td>RBF kernel is a general-purpose kernel. It is used when there is no prior knowledge about the data. </td>
+            </tr>
+            <tr>
+              <td>Sigmoid Kernel</td>
+              <td>Sigmoid kernel is used when the data is not linearly separable. It is similar to a neural network.</td>
+            </tr>
+          </table>
+        </div>
+        <div class="panel p30"><h2>SVM - Tuning Parameters</h2>
+          <table>
+            <tr>
+              <th>Tuning Parameter</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <td>Kernel</td>
+              <td>The kernel function is used to map the data into a higher-dimensional space where separation is possible.</td>
+            </tr>
+            <tr>
+              <td>Regularization Parameter <i>(C)</i></td>
+              <td>The regularization parameter C controls the tradeoff between maximizing the margin and minimizing the training error. A larger C value results in a larger margin and higher training error but lower, while a small C value results in a smaller margin and lower training error but high variance. Also referred to as a budget parameter. </td>
+            </tr>
+          </table>
+          <div class="plot"><img src="SS1.png" alt=""></div>
+        </div>
+        <div class="panel p31"><h2>Neural Networks</h2>
+          <table>
+            <tr>
+              <th>Neural Network Component</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <td>Neurons (Artificial Neurons)</td>
+              <td>Neurons are the basic building blocks of neural networks. They are mathematical functions that take inputs and produce an output. They are inspired by biological neurons in the human brain.</td>
+            </tr>
+            <tr>
+              <td>Layers</td>
+              <td>Layers are composed of multiple neurons that process information and learn to make predictions. The Input layer recieves initial data pass it on to the hidden layer where computations are performed and patterns are learnt, then it is further passed on the output layer where predictions are made.</td>
+            </tr>
+            <tr>
+              <td>Weights</td>
+              <td>Neurons are connected by weighted connections. Each connection has a weight, which determines the strength of the connection. Additionally, each neuron has a bias term that helps adjust the output.</td>
+            </tr>
+            <tr>
+              <td>Activation Functions</td>
+              <td>Neurons apply an activation function to the weighted sum of their inputs. Neurons apply an activation function to the weighted sum of their inputs.</td>
+            </tr>
+            <tr>
+              <td>Feedforward Propogation and Back Propogation</td>
+              <td>During the training and prediction phases, data is passed through the network in a forward direction. Neural networks improve predictions by adjusting the weights and biases through backpropagation. </td>
+            </tr>
+            <tr>
+              <td>HyperParameters</td>
+              <td>Neural networks have hyperparameters that need to be set before training, such as the learning rate, the number of hidden layers, the number of neurons in each layer, and the choice of activation functions.</td>
+            </tr>
+          </table>
+          <div class="plot" style = "width:60%; height:50%;"><img src="https://miro.medium.com/v2/resize:fit:1358/1*-eLjPY7UGSoQhSyW5qC6gw.gif" alt="" style = "object-fit:100%;"></div>
+        </div>
+        <div class="panel p32"><h2>Neural network components</h2>
+          <table>
+            <tr>
+              <th>Component</th>
+              <th>Description</th>
+              <th>Parameters</th>
+            </tr>
+            <tr>
+              <td>Input Layer Neurons</td>
+              <td>The input layer of a neural network consists of neurons, each of which corresponds to one predictor or feature in the dataset. The activation function for neurons in the input layer is usually the identity function.</td>
+              <td>There are typically no hyperparameters to set for the input layer. The number of neurons in this layer is determined by the number of input features in your dataset.</td>
+            </tr>
+            <tr>
+              <td>Hidden Layer Neurons</td>
+              <td>The input layer neurons are connected to neurons in the subsequent hidden layers via weighted connections. Each connection has a weight associated with it. Along with the weighted connections, each neuron (including those in the input layer) has an associated bias which acts similar to an intercept term.</td>
+              <td>Hyperparameter include the number of hidden layers (more layers = higher complexity and risk of overfitting), number of neurons in each hidden layer (more Neurons = more complexity and computational intensity), activation function (choice impacts learning ability), and dropout rate (to prevent overfitting).</td>
+            </tr>
+            <tr>
+              <td>Output Layer</td>
+              <td>The output layer produces the final results or predictions of the neural network. The structure of this layer depends on the type of problem, whether it's regression, binary classification, or multi-class classification.</td>
+              <td>Choice of an activation function (For regression, linear activation is commonly used. For binary classification, sigmoid activation is typical. For multi-class classification, softmax activation is often used.)</td>
+            </tr>
+            <tr>
+              <td>Weights</td>
+              <td>Neurons are connected by weighted connections. Each connection has a weight, which determines the strength of the connection. Additionally, each neuron has a bias term that helps adjust the output.</td>
+              <td>Weight and Bias initialization. </td>
+            </tr>
+            <tr>
+              <td>Learning Rate</td>
+              <td>The learning rate controls the step size during weight updates.</td>
+              <td>Learning Rate balances training speed and stability. Either a fixed rate or learning rate scheduling can be used.</td>
+            </tr>
+          </table>
+        </div>
+        <div class="panel p33">
+          <h2>Types of Neural Networks</h2>
+          <table>
+            <tr>
+              <th>Neural Network Type</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <td>Feedforward Neural Networks</td>
+              <td>Feedforward neural networks are the simplest type of neural network. They consist of an input layer, one or more hidden layers, and an output layer. Data flows in one direction from the input layer to the output layer, and there are no cycles or loops in the network.</td>
+            </tr>
+            <tr>
+              <td>Recurrent Neural Networks</td>
+              <td>Recurrent neural networks (RNNs) are a type of neural network that can process sequential data. They are similar to feedforward neural networks, but they have an additional recurrent connection that allows them to retain information about previous inputs. This makes them well-suited for tasks like speech recognition, language modeling, and machine translation.</td>
+            </tr>
+            <tr>
+              <td>Convolutional Neural Networks</td>
+              <td>Convolutional neural networks (CNNs) are a type of neural network that is well-suited for image classification and object detection tasks. They are inspired by the visual cortex of the human brain and use convolutional layers to extract features from images.</td>
+            </tr>
+          </table>
+          <div class="plot" style = "height: 70%;">
+            <img src="https://viso.ai/wp-content/uploads/2021/04/convolution-neural-network-cnn-concept-1.jpg" alt="">
+          </div>
+
+
+          
+        </div>
+        <div class="panel p34"><h2>When to Use Neural Networks?</h2>
+          <table>
+            <tr>
+                <th>Application</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>Cognitive Modeling</td>
+                <td>Simulating human cognitive processes.</td>
+            </tr>
+            <tr>
+                <td>Behavioral Predictions</td>
+                <td>Predicting human behavior based on various inputs.</td>
+            </tr>
+            <tr>
+                <td>Natural Language Processing</td>
+                <td>Understanding and analyzing psychological text data.</td>
+            </tr>
+            <tr>
+                <td>Emotion Recognition</td>
+                <td>Recognizing emotions from facial expressions, speech, or text.</td>
+            </tr>
+            <tr>
+                <td>Psychopathology Prediction</td>
+                <td>Early detection of mental health conditions from various data sources.</td>
+            </tr>
+            <tr>
+                <td>Neuroimaging Analysis</td>
+                <td>Analysis of neuroimaging data to identify brain patterns.</td>
+            </tr>
+            <tr>
+                <td>Personalized Therapy</td>
+                <td>Developing personalized therapy based on a person's psychological profile.</td>
+            </tr>
+            <tr>
+                <td>Personality Assessment</td>
+                <td>Predicting and assessing personality traits from data.</td>
+            </tr>
+            <tr>
+                <td>Learning and Memory Models</td>
+                <td>Modeling how humans learn, remember, and forget information.</td>
+            </tr>
+            <tr>
+                <td>AI in Psychological Experiments</td>
+                <td>Using AI agents in psychological experiments.</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+</body>
+</html>
